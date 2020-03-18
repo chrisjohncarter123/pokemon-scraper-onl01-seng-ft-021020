@@ -12,14 +12,14 @@ class Pokemon
   
   def self.save(name, type, new_db)
     sql = <<-SQL
-      INSERT INTO Pokemon (id, name, type)
+      INSERT INTO Pokemon (name, type)
       VALUES (?, ?)
     SQL
-    new_row = new_db[:conn].execute(sql, name, type)[0]
-    return new_row
-    new_id = new_db[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
+    new_db[:conn].execute(sql, name, type)[0]
+   # return new_row
+    #new_id = new_db[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     
-    return self.new(id: new_id, name: new_row[1], type: new_row[2], db: new_db)
+   # return self.new(id: new_id, name: new_row[1], type: new_row[2], db: new_db)
   
   end
 end
