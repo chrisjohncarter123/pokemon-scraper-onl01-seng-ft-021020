@@ -16,10 +16,15 @@ class Pokemon
       VALUES (?, ?)
     SQL
     db.execute(sql, name, type)
-   # return new_row
-    #new_id = new_db[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
-    
-   # return self.new(id: new_id, name: new_row[1], type: new_row[2], db: new_db)
   
+  end
+  
+  def self.find(id, db)
+    sql = <<-SQL
+      SELECT * FROM Pokemon WHERE id=(?)
+    SQL
+    row = db.execute(sql, id)[0]
+    
+    return self.new()
   end
 end
