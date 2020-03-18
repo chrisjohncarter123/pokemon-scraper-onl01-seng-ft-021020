@@ -15,7 +15,7 @@ class Pokemon
       INSERT INTO Pokemon (name, type)
       VALUES (?, ?)
     SQL
-    new_db[:conn].execute(sql, name, type)[0]
+    new_db[:conn].execute(sql, name, type)
    # return new_row
     #new_id = new_db[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     
