@@ -16,6 +16,7 @@ class Pokemon
       VALUES (?, ?)
     SQL
     new_row = new_db[:conn].execute(sql, name, type)[0]
+    return new_row
     new_id = new_db[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     
     return self.new(id: new_id, name: new_row[1], type: new_row[2], db: new_db)
